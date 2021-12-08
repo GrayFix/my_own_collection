@@ -1,0 +1,16 @@
+namespace: my_own_namespace
+name: yandex_cloud_elk
+version: 1.0.0
+readme: README.md
+authors: Vlad Stakheev <grayfix@gmail.com>
+description: null
+license: MIT
+license_file: ''
+tags: [netology]
+dependencies: {}
+repository: https://github.com/GrayFix/my_own_collection.git
+documentation: https://github.com/GrayFix
+homepage: https://github.com/GrayFix
+issues: 
+build_ignore: []
+
