@@ -100,31 +100,27 @@ def run_module():
         supports_check_mode=True
     )
 
-    # if the user is working with this module in only check mode we do not
-    # want to make any changes to the environment, just return the current
-    # state with no modifications
     if module.check_mode:
         module.exit_json(**result)
 
+# Если файла нет ставим признак изменения
     if not os.path.isfile(module.params['path']):
         result['changed'] = True
     else:
+# Если содержимое файла не равно переменной content, ставится признак изменения
         with open(module.params['path'], 'r') as target_file:
             file_content = target_file.read()
             if module.params['content'] != file_content:
                 result['changed'] = True
 
+# Если есть признак изменения, создать или перезаписать файл path содержимым content
     if result['changed'] == True:
         with open(module.params['path'], 'w') as target_file:
             target_file.writelines(module.params['content'])
 
-    # manipulate or modify the state as needed (this is going to be the
-    # part where your module will do what it needs to do)
     result['original_message'] = module.params['path']
     result['message'] = 'goodbye'
 
-    # in the event of a successful module execution, you will want to
-    # simple AnsibleModule.exit_json(), passing the key/value results
     module.exit_json(**result)
 
 

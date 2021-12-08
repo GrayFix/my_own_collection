@@ -1,4 +1,4 @@
 - name: Run my_own_module
   my_own_module:
-    path: "{{ default_path }}"
-    content: "{{ default_content }}"
+    path: "{{ my_own_role_path }}"
+    content: "{{ my_own_role_content }}"
